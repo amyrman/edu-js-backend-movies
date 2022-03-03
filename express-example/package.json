@@ -1,0 +1,16 @@
+{
+  "name": "express-example",
+  "version": "1.0.0",
+  "description": "Minimal Express server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anders Myrman <amyhrman@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
