@@ -5,10 +5,13 @@
     <script src="assets/main.js"></script>
   </head>
   <body>
-    <h1>Hello, name!</h1>
     <form>
-      <input type="text" name="name">
-      <input type="submit">
+      <div><label for="first_name"><strong>What is your name?</strong></label></div>
+      <div>
+        <input type="text" name="first_name">
+        <input type="submit">
+      </div>
     </form>
-  </body>
+    <h1>Hello, $first_name$!</h1>
+    </body>
 </html>
