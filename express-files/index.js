@@ -9,8 +9,8 @@ app.get('/', async (request, response) => {
   response.send(fileBuf);
 });
 
-// Make server respond dynamically -- through actual user input instead of just serving static HTML files. We're also rendering HTML on the server, that is, changing (replacing) content aka server side rendering. The equivalent in the browser environment is using the DOM API. 
-// Also possible with query strings and then "/hello?name=" as a path:
+// Make server respond dynamically -- through actual user input instead of just serving static HTML files. We're also rendering HTML on the server, that is, changing (replacing) content dynamically, through external(?) manipulation (aka server side rendering, SSR). The equivalent in the browser environment is; using the DOM API. 
+// Dynamic changes are also possible with query strings and then "/hello?name=" as a path:
   // app.get('/hello', async (request, response) => {
   // const name = request.query.name;
 app.get('/:name', async (request, response) => {
