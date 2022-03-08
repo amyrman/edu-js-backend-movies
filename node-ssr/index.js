@@ -3,10 +3,12 @@ import fs from 'fs/promises';
 
 const app = express();
 
-// This, together with menuHtml, is here to demonstrate part of maintainability principle (in a very cumbersome way),
-// i.e. to loop (.map) through an array and render it in HTML to create an easier way to manipulate data/content --
-// To do this as frictionless as possible, in as few places as possible and dynamically / remotely.
-// I guess the reason is to show how and why handlebars extension, later on, is a good alternative.
+// Just some thoughts on this to facilitate my learning process:
+// This, together with menuHtml, is here to demonstrate part of maintainability principle (in a relatively cumbersome and lacking way),
+// i.e. to go through (.map) through an array and render the outcome in HTML to create an easier way to manipulate data/content --
+// preferably, to do this as frictionless as possible, in as few places as possible and dynamically / remotely.
+// This solution mixes concerns e.g. HTML needs to be edited in backend also.
+// I guess the reason is to show later on, how and why handlebars extension is a good, less cumbersome alternative.
 const menu = [
   {
     label: 'Home',
