@@ -5,7 +5,7 @@ const app = express();
 
 // Make server respond dynamically -- through actual user input instead of just serving static HTML files. We're rendering HTML on the server and changing (replacing) content dynamically, through external(?) manipulation (aka server side rendering, SSR). The equivalent in the browser environment is; using the DOM API.
 
-// Also, we've renamed the string to replace in content variable (from "name" to "$first_name$") , because replace() method replaces only first occurrence of a string. Earlier, the pattern was not unique which led to bad maintanability / separation -- when moving code around, it stopped working.
+// Also, we've renamed the search string in the "content" variable to something unique, from "name" to "$first_name$", because the replace() method replaces only the first occurrence of a string. Earlier, the search string was not unique (just "name") which led to maintanability / separation problems -- when moving code around, it stopped working.
 
 app.get('/', async (request, response) => {
   const first_name = request.query.first_name || 'user';
