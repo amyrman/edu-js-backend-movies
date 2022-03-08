@@ -20,11 +20,20 @@ const menu = [
 ];
 
 app.get("/", async (req, res) => {
-  const htmlBuf = await fs.readFile("./templates/index.html");
+  const htmlBuf = await fs.readFile("./templates/index.handlebars");
   const htmlText = htmlBuf.toString();
 
   const template = Handlebars.compile(htmlText);
-  const rendered = template();
+  const rendered = template({
+    menu: menu.map(item => {
+      return {
+        link: item.link,
+        label: item.label,
+        active: item.link == "/",
+      }
+    }),
+    path: "/",
+  });
 
   res.send(rendered);
 });

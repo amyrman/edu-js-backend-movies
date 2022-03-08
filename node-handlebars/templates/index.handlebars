@@ -9,15 +9,11 @@
       <header>
         <nav>
           <ul>
-            <li class="menu-item active">
-              <a href="/"> Home page </a>
+            {{#each menu}}
+            <li class="menu-item {{#if this.active}}active{{else}}inactive{{/if}}">
+              <a href="{{this.link}}">{{this.label}}</a>
             </li>
-            <li class="menu-item inactive">
-              <a href="/about.html"> About us </a>
-            </li>
-            <li class="menu-item inactive">
-              <a href="/contact.html"> Contact us </a>
-            </li>
+            {{/each}}
           </ul>
         </nav>
       </header>
