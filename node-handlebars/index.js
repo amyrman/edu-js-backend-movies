@@ -1,5 +1,6 @@
 import express from "express";
 import fs from "fs/promises"
+import Handlebars from "handlebars";
 
 const app = express();
 
@@ -22,7 +23,10 @@ app.get("/", async (req, res) => {
   const htmlBuf = await fs.readFile("./templates/index.html");
   const htmlText = htmlBuf.toString();
 
-  res.send(htmlText);
+  const template = Handlebars.compile(htmlText);
+  const rendered = template();
+
+  res.send(rendered);
 });
 
 app.use("/", express.static("./static"));
