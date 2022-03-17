@@ -1,8 +1,13 @@
 import express from "express";
-import fs from "fs/promises"
-import Handlebars from "handlebars";
+import { engine } from "express-handlebars";
 
 const app = express();
+// Declare to Express framework which rendering engine should be used
+app.engine("handlebars", engine());
+// Which file-extensions the engine should associate with handlebars
+app.set("view engine", "handlebars")
+// Where templates are located
+app.set("views", "./templates")
 
 const menu = [
   {
@@ -19,23 +24,31 @@ const menu = [
   },
 ];
 
+// Which is active on current page
+const menuWithActive = path => menu.map(item => {
+  return {
+    link: item.link,
+    label: item.label,
+    active: item.link == path,
+  };
+});
+
 app.get("/", async (req, res) => {
-  const htmlBuf = await fs.readFile("./templates/index.handlebars");
-  const htmlText = htmlBuf.toString();
-
-  const template = Handlebars.compile(htmlText);
-  const rendered = template({
-    menu: menu.map(item => {
-      return {
-        link: item.link,
-        label: item.label,
-        active: item.link == "/",
-      }
-    }),
-    path: "/",
+  res.render("index", {
+    menu: menuWithActive(req.path)
   });
+});
 
-  res.send(rendered);
+app.get("/about", async (req, res) => {
+  res.render("about", {
+    menu: menuWithActive(req.path)
+  });
+});
+
+app.get("/contact", async (req, res) => {
+  res.render("contact", {
+    menu: menuWithActive(req.path)
+  });
 });
 
 app.use("/", express.static("./static"));
