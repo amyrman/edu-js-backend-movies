@@ -27,7 +27,7 @@ app.get('/onemovie:movieId', async (req, res) => {
   res.render("onemovie", { onemovie });
 });
 
-// NOTE: Might have to declare path
+
 app.use(express.static('public'))
 
 export default app;
