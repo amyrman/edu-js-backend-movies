@@ -10,11 +10,24 @@ app.engine("handlebars", engine({
     markdown: md => marked(md),
   },
 }));
-
 app.set("view engine", "handlebars");
-app.set("views", "./templates");
+app.set("views", "./src/templates");
 
-// TODO: Add Express ROUTES
+const menu = [
+  {
+    label: "Tickets",
+    link: "",
+  },
+  {
+    label: "Movies & Events",
+    link: "/movies",
+  },
+  {
+    label: "About",
+    link: "",
+  },
+];
+
 app.get('/', async (req, res) => {
   res.render("index");
 });
