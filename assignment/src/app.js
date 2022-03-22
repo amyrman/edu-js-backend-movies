@@ -14,9 +14,20 @@ app.engine("handlebars", engine({
 app.set("view engine", "handlebars");
 app.set("views", "./templates");
 
-// Express ROUTES
-// app.get('/')
+// TODO: Add Express ROUTES
+app.get('/', async (req, res) => {
+  res.render("index");
+});
 
+app.get('/allmovies', async (req, res) => {
+  res.render("allmovies", { allmovies });
+});
+
+app.get('/onemovie:movieId', async (req, res) => {
+  res.render("onemovie", { onemovie });
+});
+
+// NOTE: Might have to declare path
 app.use(express.static('public'))
 
 export default app;
