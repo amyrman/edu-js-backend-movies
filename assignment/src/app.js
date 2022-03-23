@@ -18,6 +18,10 @@ app.set("views", "./src/templates");
 
 const menu = [
   {
+    label: "Home",
+    link: "/",
+  },
+  {
     label: "Tickets",
     link: "",
   },
