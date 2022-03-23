@@ -10,15 +10,15 @@ function simplifyMovieObject(movie) {
 }
 
 export async function loadAllMovies() {
-  const res = await fetch(`${API_BASE}/movies`);
-  const payload = await res.json();
+  const response = await fetch(`${API_BASE}/movies`);
+  const payload = await response.json();
   return payload.data.map(simplifyMovieObject);
 }
 
 export async function loadSingleMovie(id) {
-  const res = await fetch(`${API_BASE}/movies/${id}`);
-  if (res.ok) {
-  const payload = await res.json();
+  const response = await fetch(`${API_BASE}/movies/${id}`);
+  if (response.ok) {
+  const payload = await response.json();
   return simplifyMovieObject(payload.data);
   }
   return;

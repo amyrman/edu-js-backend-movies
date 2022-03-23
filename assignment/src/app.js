@@ -45,30 +45,29 @@ function menuWithActive(path) {
     });
 }
 
-app.get('/', async (req, res) => {
-  res.render("index", { menu: menuWithActive(req.path) });
+app.get('/', async (request, response) => {
+  response.render("index", { menu: menuWithActive(request.path) });
 });
 
-app.get('/movies', async (req, res) => {
+app.get('/movies', async (request, response) => {
   const movies = await loadAllMovies();
-  res.render("allmovies", { movies, menu: menuWithActive(req.path) });
+  response.render("allmovies", { movies, menu: menuWithActive(request.path) });
 });
 
-app.get('/movies/:Id', async (req, res) => {
-  const movie = await loadSingleMovie(req.params.Id);
-  console.log("Test output: " +movie);
+app.get('/movies/:Id', async (request, response) => {
+  const movie = await loadSingleMovie(request.params.Id);
   if (movie) {
-    res.render("singleMovie", { movie, menu: menuWithActive(req.path)});
+    response.render("singleMovie", { movie, menu: menuWithActive(request.path)});
   } else {
-    res.status(404).render("404");
+    response.status(404).render("404");
   }
 });
 
 app.use(express.static('public'))
 
 // Used 404 handling according to Express FAQ: http://expressjs.com/en/starter/faq.html
-app.use((req, res, next) => {
-  res.status(404).render("404")
-})
+app.use((request, response, next) => {
+  response.status(404).render("404")
+});
 
 export default app;
