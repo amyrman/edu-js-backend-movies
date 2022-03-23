@@ -1,7 +1,7 @@
 import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
-import { loadAllMovies, loadMovie } from "./movies.js";
+import { loadAllMovies, loadSingleMovie } from "./movies.js";
 
 const app = express();
 
@@ -55,11 +55,20 @@ app.get('/movies', async (req, res) => {
 });
 
 app.get('/movies/:Id', async (req, res) => {
-  const movie = await loadMovie(req.params.Id);
-  res.render("singlemovie", { movie, menu: menuWithActive(req.path) });
+  const movie = await loadSingleMovie(req.params.Id);
+  console.log("Test output: " +movie);
+  if (movie) {
+    res.render("singleMovie", { movie, menu: menuWithActive(req.path)});
+  } else {
+    res.status(404).render("404");
+  }
 });
 
-
 app.use(express.static('public'))
+
+// Used 404 handling according to Express FAQ: http://expressjs.com/en/starter/faq.html
+app.use((req, res, next) => {
+  res.status(404).render("404")
+})
 
 export default app;
