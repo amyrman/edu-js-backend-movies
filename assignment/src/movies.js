@@ -17,6 +17,9 @@ export async function loadAllMovies() {
 
 export async function loadSingleMovie(id) {
   const res = await fetch(`${API_BASE}/movies/${id}`);
+  if (res.ok) {
   const payload = await res.json();
   return simplifyMovieObject(payload.data);
+  }
+  return;
 }
