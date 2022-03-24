@@ -2,17 +2,89 @@
   font-family: sans-serif;
 }
 
-body {
-  background-color: blanchedalmond;
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
 }
 
-.header {
+a {
+  text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+  color: #c51010;
+}
+
+li {
+  list-style-type: none;
+}
+
+header {
+  display: flex;
   padding: 1em;
-  background: #eee;
+  background-color:black;
 }
 
-.header h1 {
-  font-size: 2em;
+nav {
+  margin: 1em;
+}
+
+nav ul {
+  display: flex;
+  padding: 1rem 10rem;
+  font-size: 1.2rem;
+}
+
+nav li {
+  list-style-type: none;
+}
+
+nav li a {
+  padding: 3em;
+}
+
+nav li.active {
+  color: #c51010;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-style:dotted;
+  text-decoration-thickness: 0.5rem;
+}
+
+main {
+  flex: 1;
+  text-align: justify;
+  padding-left: 25vw;
+  width: 50vw;
+}
+
+main ul {
+  padding: 2rem, 0rem;
+}
+
+footer {
+  background-color: black;
+  padding: 2em;
+  text-align: center;
+}
+
+.headerLogo {
+  text-align: center;
+  align-self: center;
+  padding-left: 1.2rem;
+  padding-right: 4rem;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .movie img {
