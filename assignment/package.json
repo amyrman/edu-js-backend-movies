@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "Anders Myrman <amyhrman@gmail.com>",
   "license": "ISC",
