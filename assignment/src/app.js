@@ -17,16 +17,13 @@ app.set("view engine", "handlebars");
 app.set("views", "./src/templates");
 
 const menu = [
-  {
-    label: "Home",
-    link: "/",
-  },
+
   {
     label: "Tickets",
     link: "",
   },
   {
-    label: "Movies & Events",
+    label: "Movies",
     link: "/movies",
   },
   {
