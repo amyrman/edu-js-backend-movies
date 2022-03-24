@@ -7,17 +7,20 @@
   <body>
     <div class="page">
       <header>
+        <div class="headerLogo"><a href="/">
+        <h1 style="color: white">Cinema</h1>
+        <p style="color: white">ON MARS</p></a></div>
         <nav>
           <ul>
             {{#each menu}}
-            <li>
+            <li class="menu-item {{#if this.active}}active{{else}}inactive{{/if}}">
               <a href="{{ this.link }}">{{ this.label }}</a>
             </li>
             {{/each}}
           </ul>
         </nav>
       </header>
-      <main class="main">
+      <main>
         {{{body}}}
       </main>
       <footer>This is a footer</footer>
